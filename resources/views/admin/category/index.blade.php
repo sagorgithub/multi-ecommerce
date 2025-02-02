@@ -8,37 +8,37 @@ active
 Category
 @endsection
 @section('dashbord_content')
- <!--start main wrapper-->
- <main class="main-wrapper">
+<!--start main wrapper-->
+<main class="main-wrapper">
     <div class="main-content">
-      <!--breadcrumb-->
-      <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-        <div class="breadcrumb-title pe-3">
-          <a href="{{url('home')}}">Dashboard</a>
-        </div>
-        <div class="ps-3">
-          <nav aria-label="breadcrumb">
-            <ol class="breadcrumb mb-0 p-0">
-              <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
-              </li>
-              <li class="breadcrumb-item active" aria-current="page">Category</li>
-            </ol>
-          </nav>
-        </div>
-        <div class="ms-auto">
-          <div class="btn-group">
-            <button type="button" class="btn btn-primary">Settings</button>
-            <button type="button" class="btn btn-primary split-bg-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown">	<span class="visually-hidden">Toggle Dropdown</span>
-            </button>
-            <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-end">	<a class="dropdown-item" href="javascript:;">Action</a>
-              <a class="dropdown-item" href="javascript:;">Another action</a>
-              <a class="dropdown-item" href="javascript:;">Something else here</a>
-              <div class="dropdown-divider"></div><a class="dropdown-item" href="javascript:;">Separated link</a>
+        <!--breadcrumb-->
+        <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
+            <div class="breadcrumb-title pe-3">
+                <a href="{{url('home')}}">Dashboard</a>
             </div>
-          </div>
+            <div class="ps-3">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb mb-0 p-0">
+                        <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
+                        </li>
+                        <li class="breadcrumb-item active" aria-current="page">Category</li>
+                    </ol>
+                </nav>
+            </div>
+            <div class="ms-auto">
+                <div class="btn-group">
+                    <button type="button" class="btn btn-primary">Settings</button>
+                    <button type="button" class="btn btn-primary split-bg-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown"> <span class="visually-hidden">Toggle Dropdown</span>
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-end"> <a class="dropdown-item" href="javascript:;">Action</a>
+                        <a class="dropdown-item" href="javascript:;">Another action</a>
+                        <a class="dropdown-item" href="javascript:;">Something else here</a>
+                        <div class="dropdown-divider"></div><a class="dropdown-item" href="javascript:;">Separated link</a>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-      <!--end breadcrumb-->
+        <!--end breadcrumb-->
         <div class="">
             <div class="row">
                 <div class="col-md-8">
@@ -48,17 +48,17 @@ Category
                         </div>
                         <div class="card-body">
                             @if (session('deleted_status'))
-                                <div class="alert alert-danger">
-                                    {{ session('deleted_status') }}
-                                </div>
+                            <div class="alert alert-danger">
+                                {{ session('deleted_status') }}
+                            </div>
                             @endif
                             @if (session('edit_status'))
-                                <div class="alert alert-success">
-                                    {{ session('edit_status') }}
-                                </div>
+                            <div class="alert alert-success">
+                                {{ session('edit_status') }}
+                            </div>
                             @endif
                             <div class="table-responsive">
-                                <table id="category_table"  class="table table-striped table-bordered">
+                                <table id="category_table" class="table table-striped table-bordered">
                                     <thead>
                                         <tr>
                                             <th>SL No</th>
@@ -79,7 +79,7 @@ Category
                                             <td>{{ App\Models\User::find($category->user_id)->name }}</td>
                                             <td>{{ $category->created_at->format('d/m/y h:i:s A') }}</td>
                                             <td>
-                                              <img class="img-fluid" src="{{ asset('upload/category_photos') }}/{{ $category->category_photo }}" alt="">
+                                                <img class="img-fluid" src="{{ asset('upload/category_photos') }}/{{ $category->category_photo }}" alt="">
                                             </td>
                                             <td>
                                                 <div class="btn-group" role="group" aria-label="Basic mixed styles example">
@@ -104,14 +104,14 @@ Category
                         </div>
                         <div class="card-body">
                             @if (session('restore_status'))
-                                <div class="alert alert-success">
-                                    {{ session('restore_status') }}
-                                </div>
+                            <div class="alert alert-success">
+                                {{ session('restore_status') }}
+                            </div>
                             @endif
                             @if (session('forsedelete_status'))
-                                <div class="alert alert-danger">
-                                    {{ session('forsedelete_status') }}
-                                </div>
+                            <div class="alert alert-danger">
+                                {{ session('forsedelete_status') }}
+                            </div>
                             @endif
                             <table>
                                 <table class="table table-bordered">
@@ -158,32 +158,32 @@ Category
                         </div>
                         <div class="card-body">
                             @if (session('succss_status'))
-                                <div class="alert alert-success">
-                                    {{ session('succss_status') }}
-                                </div>
+                            <div class="alert alert-success">
+                                {{ session('succss_status') }}
+                            </div>
                             @endif
 
                             @if ($errors->all())
-                                <div class="alert alert-danger">
-                                    @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                    @endforeach
-                                </div>
+                            <div class="alert alert-danger">
+                                @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                                @endforeach
+                            </div>
                             @endif
                             <form action="{{ url('add/category/post') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-group">
-                                <label>Category Name</label>
-                                <input type="text" class="form-control" placeholder="Enter Category Name" name="category_name" value="{{ old('category_name') }}">
-                                @error('category_name')
+                                    <label>Category Name</label>
+                                    <input type="text" class="form-control" placeholder="Enter Category Name" name="category_name" value="{{ old('category_name') }}">
+                                    @error('category_name')
                                     <samp class="text-danger">{{ $message }}</samp>
-                                @enderror
+                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <label>Category Description</label>
                                     <textarea name="category_description" class="form-control" placeholder="Enter Category Description" rows="5">{{ old('category_description') }}</textarea>
                                     @error('category_description')
-                                        <samp class="text-danger">{{ $message }}</samp>
+                                    <samp class="text-danger">{{ $message }}</samp>
                                     @enderror
                                 </div>
 
@@ -191,7 +191,7 @@ Category
                                     <label>Category Photo</label>
                                     <input type="file" name="category_photo" class="form-control">
                                     @error('category_description')
-                                        <samp class="text-danger">{{ $message }}</samp>
+                                    <samp class="text-danger">{{ $message }}</samp>
                                     @enderror
                                 </div>
                                 <button type="submit" class="btn btn-primary mt-3">Add Category</button>
@@ -207,9 +207,9 @@ Category
 
 @section('footer_script')
 <script>
-  $(document).ready(function() {
-    $('#category_table').DataTable();
-    } );
+    $(document).ready(function() {
+        $('#category_table').DataTable();
+    });
 </script>
 <!-- <script>
   $(document).ready(function() {

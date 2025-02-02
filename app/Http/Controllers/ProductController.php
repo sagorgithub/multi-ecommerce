@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\slug;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Str;
 use Image;
 
 class ProductController extends Controller
@@ -16,8 +18,8 @@ class ProductController extends Controller
     public function index()
     {
         return view('admin.product.index', [
-          'active_categories' => Category::all(),
-          'products' => Product::all(),
+            'active_categories' => Category::all(),
+            'products' => Product::all(),
         ]);
     }
 
@@ -35,10 +37,12 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         // print_r($request->except('_token'));
+        $slug_link = Str::slug($request->product_name . "-" . Str::random(5));
         Product::insert($request->except('_token') + [
-          'created_at' => Carbon::now(),
+            'created_at' => Carbon::now(),
+            'slug' => $slug_link,
         ]);
-        return back()->with('product_status', $request->product_name. ' Product Added Successfully!');
+        return back()->with('product_status', $request->product_name . ' Product Added Successfully!');
     }
 
     /**
@@ -66,7 +70,7 @@ class ProductController extends Controller
     public function update(Request $request, Product $product)
     {
         // print_r($request->except('_token', '_method', 'product_photo'));
-        
+
         $product->update($request->except('_token', '_method', 'product_photo'));
 
         // print_r($request->all());

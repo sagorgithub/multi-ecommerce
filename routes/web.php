@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,9 +20,13 @@ use Illuminate\Foundation\Auth\EmailVerificationRequest;
 
 
 
-Route::get('/', [FrontendController::class, 'welcome']);
+Route::get('/', [FrontendController::class, 'index']);
 Route::get('contact', [FrontendController::class, 'contact']);
 Route::get('about', [FrontendController::class, 'about']);
+
+
+//Products Links
+Route::get('product/details/{slug}', [FrontendController::class, 'productdetails']);
 
 Auth::routes(['verify' => true]);
 // Auth::routes();
