@@ -154,8 +154,12 @@ active
                                     <input type="text" name="product_alert_quantity" class="form-control" placeholder="Enter Category Description">
                                 </div>
                                 <div class="form-group">
-                                    <label>Product Photo</label>
-                                    <input type="file" name="product_photo" class="form-control">
+                                    <label>Product Thumbnail Photo</label>
+                                    <input type="file" name="product_thumbnail_photo" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label>Product Multiple Photos</label>
+                                    <input type="file" name="product_multiple_photo[]" class="form-control" multiple>
                                 </div>
                                 <button type="submit" class="btn btn-primary mt-3">Add Product</button>
                             </form>

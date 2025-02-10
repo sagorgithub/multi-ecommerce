@@ -145,7 +145,7 @@
                                         <li><a href="blog-details.html">blog Details</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="contact.html">Contact</a></li>
+                                <li><a href="{{ url('contact') }}">Contact</a></li>
                             </ul>
                         </nav>
                     </div>
@@ -281,7 +281,7 @@
                                         <li><a href="blog-details.html">Blog Details</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="contact.html">Contact</a></li>
+                                <li><a href="{{ url('add/category') }}">Contact</a></li>
                             </ul>
                         </div>
                     </div>
@@ -329,7 +329,7 @@
                                     <li><a href="#">our story</a></li>
                                     <li><a href="#">feed shop</a></li>
                                     <li><a href="blog.html">how to eat blog</a></li>
-                                    <li><a href="contact.html">contact</a></li>
+                                    <li><a href="{{ url('contact') }}">contact</a></li>
                                 </ul>
                             </div>
                         </div>

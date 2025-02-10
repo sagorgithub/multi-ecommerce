@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 02, 2025 at 10:50 AM
+-- Generation Time: Feb 10, 2025 at 12:57 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -53,6 +53,36 @@ INSERT INTO `categories` (`id`, `category_name`, `category_description`, `user_i
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `contacts`
+--
+
+CREATE TABLE `contacts` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `contact_name` varchar(255) NOT NULL,
+  `contact_email` varchar(255) NOT NULL,
+  `contact_subject` varchar(255) NOT NULL,
+  `contact_message` longtext NOT NULL,
+  `contact_attachment` varchar(255) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `contacts`
+--
+
+INSERT INTO `contacts` (`id`, `contact_name`, `contact_email`, `contact_subject`, `contact_message`, `contact_attachment`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 'Md Noman', 'nomans@deepde.com', 'fdsf', 'fvdasfsadf', 'C:\\xampp\\tmp\\php8BC2.tmp', '2025-02-03 07:28:16', NULL, NULL),
+(2, 'Md Noman', 'nomans@deepde.com', 'fdsf', 'fvdasfsadf', 'contact_uploads/2.jpg', '2025-02-03 07:31:01', '2025-02-03 07:31:01', NULL),
+(3, 'Md Noman', 'nomans@deepde.com', 'fgsdfgdfsgdfgdsfgdfgfgfdvgbvdbcvbcvxgbdffgh', 'fggdfgfsdg', 'contact_uploads/3.png', '2025-02-03 07:33:12', '2025-02-03 07:33:12', NULL),
+(4, 'MD SAGOR HOSEN', 'sagorhossenrased@gmail.com', 'fgsdfgdfsgdfgdsfgdfgfgfdvgbvdbcvbcvxgbdffgh', 'fvdasfsadf', NULL, '2025-02-03 08:59:03', NULL, NULL),
+(5, 'MD SAGOR HOSEN', 'sagorhossenrased@gmail.com', 'fgsdfgdfsgdfgdsfgdfgfgfdvgbvdbcvbcvxgbdffgh', 'rt hsbdfgsdfgvsdf', 'contact_uploads/5.pdf', '2025-02-04 12:12:22', '2025-02-04 12:12:22', NULL),
+(6, 'MD SAGOR HOSEN', 'sagorhossenrased@gmail.com', 'fgsdfgdfsgdfgdsfgdfgfgfdvgbvdbcvbcvxgbdffgh', 'eartesrtgfer', 'contact_uploads/6.txt', '2025-02-04 12:13:28', '2025-02-04 12:13:28', NULL);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `failed_jobs`
 --
 
@@ -89,7 +119,9 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (4, '2019_12_14_000001_create_personal_access_tokens_table', 1),
 (5, '2014_10_12_100000_create_password_resets_table', 2),
 (8, '2024_12_25_155022_create_categories_table', 3),
-(15, '2024_12_25_194509_create_products_table', 4);
+(15, '2024_12_25_194509_create_products_table', 4),
+(20, '2025_02_02_084951_create_contacts_table', 5),
+(21, '2025_02_05_135828_create_product_images_table', 6);
 
 -- --------------------------------------------------------
 
@@ -161,8 +193,50 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `category_id`, `product_name`, `product_short_description`, `product_long_description`, `product_price`, `product_quantity`, `product_alert_quantity`, `product_thumbnail_photo`, `slug`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 21, 'Mega Stainless Steel Infrared Cooker - 3500 Watt - Gold', 'fdsfsdf', 'sdfd', 120, 12.00, 2, 'default_product_thumbnail_photo.jpg', 'mega-stainless-steel-infrared-cooker-3500-watt-gold-sbrql', '2025-02-01 23:55:10', NULL, NULL),
-(2, 21, 'Panasonic Hotel Toofaan Super Mixer Grinder with 4 Jars - 1250 Watts - Green', 'Panasonic Hotel Toofaan Super Mixer Grinder with 4 Jars - 1250 Watts - Green', 'Panasonic Hotel Toofaan Super Mixer Grinder with 4 Jars - 1250 Watts - Green', 120, 12.00, 2, 'default_product_thumbnail_photo.jpg', 'panasonic-hotel-toofaan-super-mixer-grinder-with-4-jars-1250-watts-green-leldm', '2025-02-01 23:56:27', NULL, NULL);
+(1, 20, 'Mega Stainless Steel Infrared Cooker - 3500 Watt - Gold', 'fdsfsdf', 'sdfd', 120, 12.00, 2, 'default_product_thumbnail_photo.jpg', 'mega-stainless-steel-infrared-cooker-3500-watt-gold-sbrql', '2025-02-01 23:55:10', '2025-02-05 08:24:46', '2025-02-05 08:24:46'),
+(3, 19, 'Nature Honey', 'On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble that are bound to ensue; and equal blame belongs', 'we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble that are bound to ensue; and equal blame belongs to those who fail in their duty through weakness of will, which is the same as saying through shrinking from toil and pain.\r\n\r\nThese cases are perfectly simple and easy to distinguish. In a free hour, when our power of choice is untrammelled and when nothing prevents our being able to do what we like best, every pleasure is to be welcomed and every pain avoided.', 120, 12.00, 2, '3.jpg', 'nature-honey-w5cyy', '2025-02-05 06:53:26', '2025-02-05 06:53:27', NULL),
+(6, 17, 'Pure Nature Product', 'dsfsdfsd', 'fdasdfsdf', 120, 12.00, 2, '6.jpg', 'pure-nature-product-l8oyy', '2025-02-05 08:22:25', '2025-02-05 08:22:26', NULL),
+(7, 19, 'Pure Nature Product', 'werwer', 'defsadrf', 120, 12.00, 2, '7.jpg', 'pure-nature-product-mi9uk', '2025-02-05 08:23:57', '2025-02-05 08:23:58', NULL),
+(8, 19, 'dffadsafdsf', 'sdfaadsf', 'dfsadfs', 120, 12.00, 2, '8.jpg', 'dffadsafdsf-zv8md', '2025-02-05 08:24:29', '2025-02-05 08:24:29', NULL),
+(9, 19, 'afdsfdsafsdf', 'sdfsdafdsfsad', 'fsadfwadfsdf', 120, 12.00, 2, '9.jpg', 'afdsfdsafsdf-glhwi', '2025-02-05 08:25:14', '2025-02-05 08:25:14', NULL),
+(10, 19, 'afdsfdsafsdfasdfdf', 'sadfdsaf', 'dsfafdffdsa', 120, 12.00, 2, '10.jpg', 'afdsfdsafsdfasdfdf-5hiqi', '2025-02-05 08:25:56', '2025-02-05 08:25:56', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `product_images`
+--
+
+CREATE TABLE `product_images` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `product_id` int(11) NOT NULL,
+  `product_multiple_image_name` varchar(255) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `product_images`
+--
+
+INSERT INTO `product_images` (`id`, `product_id`, `product_multiple_image_name`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 5, '5-1.jpg', '2025-02-05 08:09:54', NULL, NULL),
+(2, 5, '5-2.jpg', '2025-02-05 08:09:54', NULL, NULL),
+(3, 5, '5-3.jpg', '2025-02-05 08:09:55', NULL, NULL),
+(4, 5, '5-4.jpg', '2025-02-05 08:09:55', NULL, NULL),
+(5, 5, '5-5.jpg', '2025-02-05 08:09:55', NULL, NULL),
+(6, 5, '5-6.jpg', '2025-02-05 08:09:55', NULL, NULL),
+(7, 6, '6-1.jpg', '2025-02-05 08:22:26', NULL, NULL),
+(8, 6, '6-2.jpg', '2025-02-05 08:22:26', NULL, NULL),
+(9, 6, '6-3.jpg', '2025-02-05 08:22:26', NULL, NULL),
+(10, 8, '8-1.jpg', '2025-02-05 08:24:29', NULL, NULL),
+(11, 8, '8-2.jpg', '2025-02-05 08:24:29', NULL, NULL),
+(12, 9, '9-1.jpg', '2025-02-05 08:25:14', NULL, NULL),
+(13, 9, '9-2.jpg', '2025-02-05 08:25:14', NULL, NULL),
+(14, 10, '10-1.jpg', '2025-02-05 08:25:56', NULL, NULL),
+(15, 10, '10-2.jpg', '2025-02-05 08:25:56', NULL, NULL),
+(16, 10, '10-3.jpg', '2025-02-05 08:25:56', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -204,6 +278,12 @@ ALTER TABLE `categories`
   ADD UNIQUE KEY `categories_category_name_unique` (`category_name`);
 
 --
+-- Indexes for table `contacts`
+--
+ALTER TABLE `contacts`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `failed_jobs`
 --
 ALTER TABLE `failed_jobs`
@@ -243,6 +323,12 @@ ALTER TABLE `products`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `product_images`
+--
+ALTER TABLE `product_images`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -260,6 +346,12 @@ ALTER TABLE `categories`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
+-- AUTO_INCREMENT for table `contacts`
+--
+ALTER TABLE `contacts`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
 -- AUTO_INCREMENT for table `failed_jobs`
 --
 ALTER TABLE `failed_jobs`
@@ -269,7 +361,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
@@ -281,7 +373,13 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT for table `product_images`
+--
+ALTER TABLE `product_images`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `users`

@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\Contact;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Storage;
 
 class FrontendController extends Controller
 {
@@ -30,6 +33,32 @@ class FrontendController extends Controller
     function contact()
     {
         return view('forntend.contact');
+    }
+    function contactinsert(Request $request)
+    {
+        $contact_id = Contact::insertGetId($request->except('_token') + [
+            'created_at' => Carbon::now()
+        ]);
+        if ($request->hasFile('contact_attachment')) {
+            // $uploaded_path = $request->file('contact_attachment')->store('contact_uploads', [
+            //     'contact_attachment' => 'public'
+            // ]);
+            // $uploaded_path = $request->file('contact_attachment')->store('contact_uploads', 'public');
+
+            $uploaded_path = $request->file('contact_attachment')->storeAs(
+                'contact_uploads',
+                $contact_id . "." . $request->file('contact_attachment')->getClientOriginalExtension(),
+                'public'
+            );
+
+
+            // echo $uploaded_path;
+
+            Contact::find($contact_id)->update([
+                'contact_attachment' => $uploaded_path
+            ]);
+        }
+        return back()->with('success_status', 'We recieved your Message');
     }
     function about()
     {

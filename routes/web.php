@@ -21,7 +21,9 @@ use Illuminate\Support\Facades\Auth;
 
 
 Route::get('/', [FrontendController::class, 'index']);
+
 Route::get('contact', [FrontendController::class, 'contact']);
+Route::post('contact/insert', [FrontendController::class, 'contactinsert']);
 Route::get('about', [FrontendController::class, 'about']);
 
 
@@ -35,6 +37,7 @@ Auth::routes(['verify' => true]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware(['auth', 'verified']);
 Route::get('send/newsletter', [App\Http\Controllers\HomeController::class, 'sendnewsletter']);
+Route::get('contact/upload/download/{contact_id}', [App\Http\Controllers\HomeController::class, 'contactuploaddownload']);
 
 
 

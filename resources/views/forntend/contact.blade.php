@@ -32,22 +32,31 @@
             <div class="col-lg-8 col-12">
                 <div class="contact-form form-style">
                     <div class="cf-msg"></div>
-                    <form action="https://themepresss.com/tf/html/tohoney/mail.php" method="post" id="cf">
+                    @if(session('success_status'))
+                    <div class="alert alert-success">
+                        {{ session('success_status') }}
+                    </div>
+                    @endif
+                    <form action="{{ url('contact/insert') }}" method="post" id="cf" enctype="multipart/form-data">
+                        @csrf
                         <div class="row">
                             <div class="col-12 col-sm-6">
-                                <input type="text" placeholder="Name" id="fname" name="fname">
+                                <input type="text" placeholder="Name" id="fname" name="contact_name">
                             </div>
                             <div class="col-12  col-sm-6">
-                                <input type="text" placeholder="Email" id="email" name="email">
+                                <input type="text" placeholder="Email" id="email" name="contact_email">
                             </div>
                             <div class="col-12">
-                                <input type="text" placeholder="Subject" id="subject" name="subject">
+                                <input type="text" placeholder="Subject" id="subject" name="contact_subject">
                             </div>
                             <div class="col-12">
-                                <textarea class="contact-textarea" placeholder="Message" id="msg" name="msg"></textarea>
+                                <textarea class="contact-textarea" placeholder="Message" id="msg" name="contact_message"></textarea>
                             </div>
                             <div class="col-12">
-                                <button id="submit" name="submit">SEND MESSAGE</button>
+                                <input type="file" class="form-control" placeholder="File attachment kor" name="contact_attachment">
+                            </div>
+                            <div class="col-12">
+                                <button type="submit">SEND MESSAGE</button>
                             </div>
                         </div>
                     </form>
